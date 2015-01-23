@@ -2,7 +2,7 @@
 using System.Collections;
 using GamepadInput;
 
-public class controller : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 
 	public float speedMove = 10.0F;
 	public float speedRotate = 80.0F;
