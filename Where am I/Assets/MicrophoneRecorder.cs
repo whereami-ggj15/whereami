@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MicrophoneRecorder : MonoBehaviour {
-
+/*
 	AudioSource aud;
 	bool isRecording = false;
 
@@ -23,4 +23,5 @@ public class MicrophoneRecorder : MonoBehaviour {
 			isRecording = true;
 		}
 	}
+	*/
 }

@@ -5,11 +5,11 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{78CA9F15-C8B7-A76D-ACD0-F819B05C5888}</ProjectGuid>
+	<ProjectGuid>{DF4F4793-6F9C-D824-ECFA-101C61F8DB74}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
-	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<AssemblyName>Assembly-UnityScript</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
 	<BaseDirectory>Assets</BaseDirectory>
@@ -46,8 +46,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\MicControl\C# version\MicControlC.cs" />
-     <Compile Include="Assets\MicrophoneRecorder.cs" />
+     <Compile Include="Assets\MicControl\Javascript version (original)\MicControl.js" />
+     <Compile Include="Assets\MicControl\Javascript version (original)\MicControlImporter.js" />
+     <Compile Include="Assets\MicControl\example\ScaleObject.js" />
      <None Include="Assets\MicControl\C# version\ReadMe.txt" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\MicControl\Javascript version (original)\ReadMe.txt" />
