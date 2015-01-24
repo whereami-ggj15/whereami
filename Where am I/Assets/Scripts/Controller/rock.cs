@@ -2,10 +2,10 @@
 using System.Collections;
 
 public class rock : MonoBehaviour {
-
 	private static bool isThrowing = false;
 	private static GameObject rockGameObject;
 	private static float highSpawnRock = 2.5F;
+	private static float highLimitUnspawn = -10.0F;
 	private static string objectRockName = "Rock";
 	private static string obejctPlayerName = "Player";
 
@@ -31,7 +31,7 @@ public class rock : MonoBehaviour {
 	}
 
 	private void Update(){
-		if (rockGameObject.rigidbody.velocity.magnitude <= 0.0F){
+		if (rockGameObject.rigidbody.velocity.magnitude <= 0.0F || rockGameObject.transform.position.y <= highLimitUnspawn){
 			Debug.Log ("rock depop from the world");
 			isThrowing = false;
 			Destroy(rockGameObject);

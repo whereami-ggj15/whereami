@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 using GamepadInput;
+using System;
+using XInputDotNetPure; 
 
 public class PlayerController : MonoBehaviour {
-
 	public KeyCode forward = KeyCode.Z;
 	public KeyCode back = KeyCode.S;
 	public KeyCode turnRight = KeyCode.D;
@@ -12,18 +13,26 @@ public class PlayerController : MonoBehaviour {
 	public KeyCode strafeLeft = KeyCode.A;
 	public KeyCode walkToggle = KeyCode.LeftShift;
 	public KeyCode throwRock = KeyCode.Space;
-	
-	private float speedMove = 200.0f;
-	private float speedRotate = 100.0f;
-	private float joystickTolerance = 0.2F;
-	private float detectionTrigger = 1.0F;
-	private float throwRockForce = 1000.0F;
-	private string groundName = "map";
-	private float maxSpeed = 7.529F;
-	private float currentSpeedRotate;
 
-	public void gamePadShake(){
-		//Gamepad.SetVibration(playerIndex, state.Triggers.left,state.Triggers.right);
+	private float speedMove = 200.0f; //vitesse de déplacement du joueur
+	private float speedRotate = 100.0f; //vitesse de rotation du joueur
+	private float joystickTolerance = 0.2F; //tolérence à la détection d'un mouvement sur les joysticks du gamepad
+	private float detectionTrigger = 1.0F; //niveau de détection des gachettes du gamepad
+	private float throwRockForce = 1000.0F; //force de lancer d'une pierre
+	private float maxSpeed = 7.529F; //vitesse (vélocité maximal), sert à déduire un rapport de vitesse entre la vitesse actuelle et la vitesse max
+	private float controllerShakeDelay = 50.0F; //temps de secousses du gamepad
+
+	private bool isShaking = false;
+	private float currentSpeedRotate;
+	private DateTime beginDateShake;
+
+	public void gamePadShake(float forceRight, float forceLeft){
+		isShaking = true;
+		beginDateShake = DateTime.Now;
+		XInputDotNetPure.GamePad.SetVibration(XInputDotNetPure.PlayerIndex.One, forceRight, forceLeft);
+		XInputDotNetPure.GamePad.SetVibration(XInputDotNetPure.PlayerIndex.Two, forceRight, forceLeft);
+		XInputDotNetPure.GamePad.SetVibration(XInputDotNetPure.PlayerIndex.Three, forceRight, forceLeft);
+		XInputDotNetPure.GamePad.SetVibration(XInputDotNetPure.PlayerIndex.Four, forceRight, forceLeft);
 	}
 
 	public float getMove(){
@@ -53,14 +62,24 @@ public class PlayerController : MonoBehaviour {
 		else{
 			KeyboardManager();
 		}
+		if (isShaking)
+			shakingManager();
 	}
-
+	
 	private void GamePadManager(){
-		Vector2 leftStick = GamePad.GetAxis(GamePad.Axis.LeftStick, GamePad.Index.Any);
-		Vector2 rightStick = GamePad.GetAxis(GamePad.Axis.RightStick, GamePad.Index.Any);
+		Vector2 leftStick = GamepadInput.GamePad.GetAxis(GamepadInput.GamePad.Axis.LeftStick, GamepadInput.GamePad.Index.Any);
+		Vector2 rightStick = GamepadInput.GamePad.GetAxis(GamepadInput.GamePad.Axis.RightStick, GamepadInput.GamePad.Index.Any);
 
-		if (GamePad.GetTrigger(GamePad.Trigger.RightTrigger, GamePad.Index.Any) >= detectionTrigger)
+		if (GamepadInput.GamePad.GetTrigger(GamepadInput.GamePad.Trigger.RightTrigger, GamepadInput.GamePad.Index.Any) >= detectionTrigger)
 			rock.instanciateAndThrowRock(throwRockForce);
+		if (GamepadInput.GamePad.GetButtonDown(GamepadInput.GamePad.Button.Y, GamepadInput.GamePad.Index.Any))
+			gamePadShake(50.0F, 50.0F);
+		if (GamepadInput.GamePad.GetButtonDown(GamepadInput.GamePad.Button.X, GamepadInput.GamePad.Index.Any))
+			gamePadShake(50.0F, 0.0F);
+		if (GamepadInput.GamePad.GetButtonDown(GamepadInput.GamePad.Button.B, GamepadInput.GamePad.Index.Any))
+			gamePadShake(0.0F, 50.0F);
+		if (GamepadInput.GamePad.GetButtonDown(GamepadInput.GamePad.Button.A, GamepadInput.GamePad.Index.Any))
+			gamePadShake(0.0F, 0.0F);
 		
 		if (leftStick.y > joystickTolerance || leftStick.y < -joystickTolerance)
 			rigidbody.AddForce(transform.TransformDirection(Vector3.forward) * leftStick.y * speedMove);
@@ -112,9 +131,10 @@ public class PlayerController : MonoBehaviour {
 			currentSpeedRotate = 0.0F;
 	}
 
-	private void OnCollisionStay(Collision other){
-		if (other.gameObject.name != groundName){
-			Debug.Log ("Le joueur se frotte contre un mur");
+	private void shakingManager(){
+		if ((DateTime.Now - beginDateShake).TotalMilliseconds >= controllerShakeDelay){
+			gamePadShake(0.0F, 0.0F);
+			isShaking = false;
 		}
 	}
 }

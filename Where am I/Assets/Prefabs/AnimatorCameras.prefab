@@ -11,6 +11,7 @@ GameObject:
   - 20: {fileID: 2002578}
   - 124: {fileID: 12402578}
   - 92: {fileID: 9202578}
+  - 114: {fileID: 11402578}
   m_Layer: 0
   m_Name: FogCam
   m_TagString: MainCamera
@@ -26,7 +27,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 402580}
-  - 114: {fileID: 11433780}
   m_Layer: 0
   m_Name: AnimatorCameras
   m_TagString: Untagged
@@ -45,7 +45,8 @@ GameObject:
   - 20: {fileID: 2002580}
   - 124: {fileID: 12402580}
   - 92: {fileID: 9202580}
-  - 114: {fileID: 11457262}
+  - 114: {fileID: 11402580}
+  - 114: {fileID: 11498186}
   m_Layer: 0
   m_Name: GlowCam
   m_TagString: MainCamera
@@ -169,26 +170,29 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102582}
   m_Enabled: 1
---- !u!114 &11433780
+--- !u!114 &11402578
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102580}
+  m_GameObject: {fileID: 102578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d6640cc1eecd8444990c6bfe82c1465, type: 3}
+  m_Script: {fileID: 11500000, guid: c9f288af8cbb8ab4aadbde15b4912dd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomSensibility: 10
-  dragSensibility: 10
-  camerasPosition: {fileID: 402580}
-  invertZoomButtons: 0
-  activateZoom: 0
-  activateDrag: 0
-  activateClick: 1
-  pingObject: {fileID: 0}
---- !u!114 &11457262
+--- !u!114 &11402580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f288af8cbb8ab4aadbde15b4912dd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11498186
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
