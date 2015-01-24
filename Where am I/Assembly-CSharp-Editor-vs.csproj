@@ -5,11 +5,11 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{7E0A5B66-6734-801C-B0DF-086DFACDFEC8}</ProjectGuid>
+	<ProjectGuid>{D4385936-520A-E0B0-00A1-0AE72D05B443}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
-	<AssemblyName>Assembly-UnityScript-Editor</AssemblyName>
+	<AssemblyName>Assembly-CSharp-Editor</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
 	<BaseDirectory>Assets</BaseDirectory>
@@ -46,22 +46,15 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\MicControl\Editor\VolumeBarJ.js" />
+     <Compile Include="Assets\MicControl\Editor\VolumeBarC.cs" />
      <None Include="Assets\MicControl\C# version\ReadMe.txt" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\MicControl\Javascript version (original)\ReadMe.txt" />
  <Reference Include="Assembly-UnityScript-firstpass">
-<<<<<<< HEAD
  <HintPath>E:/Unity/WhereAmI/whereami/Where am I/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
  <Reference Include="Assembly-UnityScript">
  <HintPath>E:/Unity/WhereAmI/whereami/Where am I/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
-=======
- <HintPath>C:/Users/Martin/OneDrive/Projets/Where am I/Where am I/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
- </Reference>
- <Reference Include="Assembly-UnityScript">
- <HintPath>C:/Users/Martin/OneDrive/Projets/Where am I/Where am I/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
->>>>>>> f00bdff2153e8503419af8a4040a65c4bacd978f
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
