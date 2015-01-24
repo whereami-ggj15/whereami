@@ -10,22 +10,18 @@ public class OnTalk : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		input = GetComponent<MicControlC> ();
-		noise.Play ();
+		//input.StopMicrophone();
 	}
 
 	void Update(){
-		float loudness = input.loudness;
+		float loudness = input.loudness - 0.2f;
 		//Debug.Log (loudness);
 
 		if (loudness > minLoudnessToTrigger && !noise.isPlaying){
 			noise.Play (); // play le bruit de communication
-			//on débloque l'input
-			//input.StartMicrophone();
 		}
 		else if(loudness < minLoudnessToTrigger){
 			noise.Stop(); //stop le noise communication
-			// on bloque le son input
-			//input.StopMicrophone();
 		}
 	}
 }
