@@ -6,67 +6,27 @@ public class AnimatorController : MonoBehaviour {
 	public float zoomSensibility = 10.0f;
 	public float dragSensibility = 10.0f;
 	public Transform camerasPosition; // represente le gameobject qui contient les deux caméras de rendu
-	public bool invertZoomButtons = false;
-	public bool activateZoom = false;
-	public bool activateDrag = false;
-	public bool activateClick = true;
 
-	public float delayToPing = 0.50f; // seconds
+	private float maxHeight = 80.0f;
+	private float minHeight = 30.0f;
 
-	public GameObject pingObject;
-	GameObject pingInstantiate = null;
-
-	private float maxHeight = 80.0f; // zoom
-	private float minHeight = 30.0f; // zoom
 	private bool isDragging = false;
-	private Vector3 startPoint; //dragging
-
-	//private Camera cam;
-	
-	int floorMask;
-	float camRayLenght = 1000f;
+	private Vector3 startPoint;
 
 	void Awake(){
 		zoomSensibility += 1.0f;
-		floorMask = LayerMask.GetMask ("Ground");
 	}
 
 	// Update is called once per frame
 	void Update () {
 		ZoomHandler ();
-		DragHandler ();
-		ClickHandler ();
+		InputHandler ();
 	}
 
 	/**
-	 *
+	 * Gestion des clicks sur l'interface
 	 */
-	void ClickHandler(){
-		if (!activateClick || pingInstantiate != null)
-			return;
-
-		if(Input.GetMouseButtonDown(0)){
-			//Ray camRay = Ray(gameObject.transform.position, (gameObject.transform.position - Input.mousePosition).normalized);
-			Ray camRay = Camera.main.ScreenPointToRay (Input.mousePosition);
-			RaycastHit floorHit;
-
-			if (Physics.Raycast (camRay, out floorHit, camRayLenght, floorMask)){
-				Vector3 clickPosition = floorHit.point - transform.position;
-				clickPosition.y = 0f;
-
-				pingInstantiate = (GameObject) Instantiate(pingObject, clickPosition, Quaternion.identity);
-				Destroy(pingInstantiate, delayToPing);
-			}
-		}
-	}
-
-	/**
-	 * Gestion du drag de l'interface
-	 */
-	void DragHandler(){
-		if (!activateDrag)
-			return;
-
+	void InputHandler(){
 		if (Input.GetMouseButtonDown (2)){ // clique centre
 			if(!isDragging || startPoint == Vector3.zero)
 				startPoint = Input.mousePosition;
@@ -92,9 +52,6 @@ public class AnimatorController : MonoBehaviour {
 	 * Gestion du zoom de la caméra 
 	 */
 	void ZoomHandler(){
-		if (!activateZoom)
-			return;
-
 		float zooming = Input.mouseScrollDelta.y;
 		if(zooming != 0){ // scroll up ou down
 			float toY = camerasPosition.position.y + (zooming * zoomSensibility) / 10f;
@@ -108,5 +65,4 @@ public class AnimatorController : MonoBehaviour {
 			camerasPosition.position = toPosition;
 		}
 	}
-
 }
