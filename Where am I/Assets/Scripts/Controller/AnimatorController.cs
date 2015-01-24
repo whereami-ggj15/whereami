@@ -11,15 +11,20 @@ public class AnimatorController : MonoBehaviour {
 	public bool activateDrag = false;
 	public bool activateClick = true;
 
+	public float delayToPing = 0.50f; // seconds
+
 	public GameObject pingObject;
+	GameObject pingInstantiate = null;
 
 	private float maxHeight = 80.0f; // zoom
 	private float minHeight = 30.0f; // zoom
 	private bool isDragging = false;
 	private Vector3 startPoint; //dragging
+
+	//private Camera cam;
 	
 	int floorMask;
-	float camRayLenght = 100;
+	float camRayLenght = 1000f;
 
 	void Awake(){
 		zoomSensibility += 1.0f;
@@ -37,19 +42,20 @@ public class AnimatorController : MonoBehaviour {
 	 *
 	 */
 	void ClickHandler(){
-		if (!activateClick)
+		if (!activateClick || pingInstantiate != null)
 			return;
 
 		if(Input.GetMouseButtonDown(0)){
+			//Ray camRay = Ray(gameObject.transform.position, (gameObject.transform.position - Input.mousePosition).normalized);
 			Ray camRay = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit floorHit;
-			
-			if (Physics.Raycast (camRay, out floorHit, camRayLenght, floorMask))
-			{
+
+			if (Physics.Raycast (camRay, out floorHit, camRayLenght, floorMask)){
 				Vector3 clickPosition = floorHit.point - transform.position;
 				clickPosition.y = 0f;
 
-				Instantiate(pingObject, clickPosition, Quaternion.identity);
+				pingInstantiate = (GameObject) Instantiate(pingObject, clickPosition, Quaternion.identity);
+				Destroy(pingInstantiate, delayToPing);
 			}
 		}
 	}
@@ -102,4 +108,5 @@ public class AnimatorController : MonoBehaviour {
 			camerasPosition.position = toPosition;
 		}
 	}
+
 }
