@@ -5,16 +5,18 @@ using System.Collections;
 public class PlayerFootsteps : MonoBehaviour {
 
 	private GameObject player;
+	private PlayerController playerCtrl;
 	private AudioSource footstepsSource;
 	private bool isPlaying = false;
 	public AudioClip defaultFootstepsSound;
-	public float minSpeed = 0.5f;
+	public float minSpeed = 0.05f;
 
 	void Start(){
-		string playerObjectName = "Player";
-		player = GameObject.Find(playerObjectName);
+		player = transform.parent.gameObject;
 		if(player == null){
 			Debug.LogWarning(gameObject.name + " can't find player");
+		} else {
+			playerCtrl = player.GetComponent<PlayerController>();
 		}
 
 		footstepsSource = GetComponent<AudioSource>();
@@ -28,7 +30,7 @@ public class PlayerFootsteps : MonoBehaviour {
 
 	void Update(){
 		//Debug.Log(player.rigidbody.velocity + " min: " + minSpeed);
-		if(Mathf.Abs(player.rigidbody.velocity.x) > minSpeed || Mathf.Abs(player.rigidbody.velocity.z) > minSpeed){
+		if(playerCtrl.getMove() > minSpeed || playerCtrl.getRotate() > minSpeed){
 			if(!isPlaying){
 				PlaySound();
 			}
