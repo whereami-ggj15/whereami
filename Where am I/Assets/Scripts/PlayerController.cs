@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour {
 		direction.z += leftStick.y;
 
 		//Vector3 force = new Vector3(leftStick.x, 0.0f, leftStick.y);
-		rigidbody.AddForce(direction * speedMove * Time.deltaTime);
+		//rigidbody.AddForce(direction * speedMove * Time.deltaTime);
 
 		Quaternion.Lerp(transform.rotation, rotation, 10 * Time.deltaTime);
 

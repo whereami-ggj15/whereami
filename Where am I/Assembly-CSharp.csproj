@@ -50,6 +50,7 @@
      <Compile Include="Assets\MicControl\C# version\MicControlC.cs" />
      <Compile Include="Assets\Scripts\Events\BatTrigger.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Radio\OnTalk.cs" />
      <None Include="Assets\MicControl\C# version\ReadMe.txt" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\MicControl\Javascript version (original)\ReadMe.txt" />
