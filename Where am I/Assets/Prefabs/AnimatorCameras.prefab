@@ -11,7 +11,6 @@ GameObject:
   - 20: {fileID: 2002578}
   - 124: {fileID: 12402578}
   - 92: {fileID: 9202578}
-  - 114: {fileID: 11402578}
   m_Layer: 0
   m_Name: FogCam
   m_TagString: MainCamera
@@ -27,6 +26,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 402580}
+  - 114: {fileID: 11409330}
+  - 114: {fileID: 11409328}
   m_Layer: 0
   m_Name: AnimatorCameras
   m_TagString: Untagged
@@ -45,7 +46,6 @@ GameObject:
   - 20: {fileID: 2002580}
   - 124: {fileID: 12402580}
   - 92: {fileID: 9202580}
-  - 114: {fileID: 11402580}
   - 114: {fileID: 11498186}
   m_Layer: 0
   m_Name: GlowCam
@@ -170,28 +170,39 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102582}
   m_Enabled: 1
---- !u!114 &11402578
+--- !u!114 &11409328
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102578}
+  m_GameObject: {fileID: 102580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d6640cc1eecd8444990c6bfe82c1465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomSensibility: 10
+  dragSensibility: 10
+  camerasPosition: {fileID: 402580}
+  invertZoomButtons: 0
+  activateZoom: 0
+  activateDrag: 0
+  activateClick: 1
+  delayToPing: .5
+  pingObject: {fileID: 181380, guid: 51a35c16a099ffa4d8fa1c9996020e13, type: 2}
+--- !u!114 &11409330
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102580}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9f288af8cbb8ab4aadbde15b4912dd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11402580
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9f288af8cbb8ab4aadbde15b4912dd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  smoothing: 5
 --- !u!114 &11498186
 MonoBehaviour:
   m_ObjectHideFlags: 1
