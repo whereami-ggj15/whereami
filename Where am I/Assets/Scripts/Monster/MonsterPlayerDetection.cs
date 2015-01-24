@@ -2,18 +2,23 @@
 using System.Collections;
 
 [RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(AudioSource))]
 public class MonsterPlayerDetection : MonoBehaviour {
 
 	private GameObject monster;
 	private NavMeshAgent navigation;
+	private AudioSource idleSoundSource;
+	private AudioSource attackSoundSource;
 	// Use this for initialization
 	void Start () {
 		monster = transform.parent.gameObject;
 		if(monster != null){
 			navigation = monster.GetComponent<NavMeshAgent>();
+			idleSoundSource = monster.transform.Find("Growls").GetComponent<AudioSource>();
+			attackSoundSource = gameObject.transform.FindChild("AttackPlayer").GetComponent<AudioSource>();
 		}
 	}
-	
+
 	void OnTriggerStay(Collider other){
 		if(other.tag == "Player"){
 			// get vector between player and monster
@@ -23,8 +28,21 @@ public class MonsterPlayerDetection : MonoBehaviour {
 			bool hitWall = CheckForWall(direction);
 			if(!hitWall){
 				// go get him !
+				if(idleSoundSource.isPlaying){
+					idleSoundSource.Stop();
+				}
+
+				if(!audio.isPlaying && !attackSoundSource.isPlaying){
+					audio.Play();
+				}
 				navigation.SetDestination(other.transform.position);
 			}
+		}
+	}
+
+	void OnTriggerExit(Collider other){
+		if(other.tag == "Player"){
+			idleSoundSource.Play();
 		}
 	}
 

@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour {
 	public KeyCode walkToggle = KeyCode.LeftShift;
 	public KeyCode throwRock = KeyCode.Space;
 	
-	private float speedMove = 1000.0f;
+	private float speedMove = 200.0f;
 	private float speedRotate = 100.0f;
 	private float joystickTolerance = 0.2F;
 	private float detectionTrigger = 1.0F;

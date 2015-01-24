@@ -4,12 +4,23 @@ using System.Collections;
 [RequireComponent(typeof(AudioSource))]
 public class AttackPlayer : MonoBehaviour {
 
+	private AudioSource chaseSoundSource;
+
+	void Start(){
+		chaseSoundSource = transform.parent.gameObject.GetComponent<AudioSource>();
+	}
+
 	void OnTriggerEnter(Collider other){
 		if(other.tag == "Player"){
 			Vector3 direction = other.transform.position - transform.position;
 			bool hitWall = CheckForWall(direction);
 			if(!hitWall){
-				audio.Play();
+				if(chaseSoundSource != null && chaseSoundSource.isPlaying){
+					chaseSoundSource.Stop();
+				}
+				if(!audio.isPlaying){
+					audio.Play();
+				}
 				other.SendMessage("Die");
 			}
 		}
