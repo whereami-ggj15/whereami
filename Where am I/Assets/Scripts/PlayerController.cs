@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
 	public KeyCode turnLeft = KeyCode.Q;
 	public KeyCode strafeRight = KeyCode.E;
 	public KeyCode strafeLeft = KeyCode.A;
+
 	public float speedMove = 5000.0f;
 	public float speedRotate = 80.0f;
 	public float joystickTolerance = 0.2F;
