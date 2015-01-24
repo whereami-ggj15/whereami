@@ -1002,7 +1002,6 @@ GameObject:
   - 114: {fileID: 775727711}
   - 54: {fileID: 775727712}
   - 81: {fileID: 775727713}
-  - 114: {fileID: 775727714}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1071,7 +1070,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 775727706}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4e0be4c78b491a4ea1416f93f203d59, type: 3}
   m_Name: 
@@ -1106,19 +1105,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 775727706}
   m_Enabled: 1
---- !u!114 &775727714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 775727706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bb0798492bedf2458011adde73ea120, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedMove: 5000
-  speedRotate: 80
 --- !u!1 &780066473
 GameObject:
   m_ObjectHideFlags: 0

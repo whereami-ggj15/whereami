@@ -6,27 +6,61 @@ public class AnimatorController : MonoBehaviour {
 	public float zoomSensibility = 10.0f;
 	public float dragSensibility = 10.0f;
 	public Transform camerasPosition; // represente le gameobject qui contient les deux caméras de rendu
+	public bool invertZoomButtons = false;
+	public bool activateZoom = false;
+	public bool activateDrag = false;
+	public bool activateClick = true;
 
-	private float maxHeight = 80.0f;
-	private float minHeight = 30.0f;
+	public GameObject pingObject;
 
+	private float maxHeight = 80.0f; // zoom
+	private float minHeight = 30.0f; // zoom
 	private bool isDragging = false;
-	private Vector3 startPoint;
+	private Vector3 startPoint; //dragging
+	
+	int floorMask;
+	float camRayLenght = 100;
 
 	void Awake(){
 		zoomSensibility += 1.0f;
+		floorMask = LayerMask.GetMask ("Ground");
 	}
 
 	// Update is called once per frame
 	void Update () {
 		ZoomHandler ();
-		InputHandler ();
+		DragHandler ();
+		ClickHandler ();
 	}
 
 	/**
-	 * Gestion des clicks sur l'interface
+	 *
 	 */
-	void InputHandler(){
+	void ClickHandler(){
+		if (!activateClick)
+			return;
+
+		if(Input.GetMouseButtonDown(0)){
+			Ray camRay = Camera.main.ScreenPointToRay (Input.mousePosition);
+			RaycastHit floorHit;
+			
+			if (Physics.Raycast (camRay, out floorHit, camRayLenght, floorMask))
+			{
+				Vector3 clickPosition = floorHit.point - transform.position;
+				clickPosition.y = 0f;
+
+				Instantiate(pingObject, clickPosition, Quaternion.identity);
+			}
+		}
+	}
+
+	/**
+	 * Gestion du drag de l'interface
+	 */
+	void DragHandler(){
+		if (!activateDrag)
+			return;
+
 		if (Input.GetMouseButtonDown (2)){ // clique centre
 			if(!isDragging || startPoint == Vector3.zero)
 				startPoint = Input.mousePosition;
@@ -52,6 +86,9 @@ public class AnimatorController : MonoBehaviour {
 	 * Gestion du zoom de la caméra 
 	 */
 	void ZoomHandler(){
+		if (!activateZoom)
+			return;
+
 		float zooming = Input.mouseScrollDelta.y;
 		if(zooming != 0){ // scroll up ou down
 			float toY = camerasPosition.position.y + (zooming * zoomSensibility) / 10f;
