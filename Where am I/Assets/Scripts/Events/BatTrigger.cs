@@ -4,6 +4,7 @@ using System.Collections;
 public class BatTrigger : MonoBehaviour {
 	
 	public GameObject bat;
+	public int contactsBeforeTrigger = 1;
 
 	AudioSource batSource;
 	Animator animator;
@@ -19,7 +20,8 @@ public class BatTrigger : MonoBehaviour {
 
 
 	void OnTriggerEnter (Collider other) {
-		if (other.gameObject == player){
+		contactsBeforeTrigger--;
+		if (other.gameObject == player && contactsBeforeTrigger <= 0){
 			animator.SetTrigger ("activate");
 			batSource.Play();
 		}

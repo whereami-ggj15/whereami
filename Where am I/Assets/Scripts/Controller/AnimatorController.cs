@@ -6,6 +6,10 @@ public class AnimatorController : MonoBehaviour {
 	public float zoomSensibility = 10.0f;
 	public float dragSensibility = 10.0f;
 	public Transform camerasPosition; // represente le gameobject qui contient les deux caméras de rendu
+	public bool invertZoomButtons = false;
+	public bool activateZoom = false;
+	public bool activateDrag = false;
+	public bool activateClick = true;
 
 	private float maxHeight = 80.0f;
 	private float minHeight = 30.0f;
@@ -24,9 +28,20 @@ public class AnimatorController : MonoBehaviour {
 	}
 
 	/**
-	 * Gestion des clicks sur l'interface
+	 *
 	 */
-	void InputHandler(){
+	void ClickHandler(){
+		if (!activateClick)
+			return;
+	}
+
+	/**
+	 * Gestion du drag de l'interface
+	 */
+	void DragHandler(){
+		if (!activateDrag)
+			return;
+
 		if (Input.GetMouseButtonDown (2)){ // clique centre
 			if(!isDragging || startPoint == Vector3.zero)
 				startPoint = Input.mousePosition;
@@ -52,6 +67,9 @@ public class AnimatorController : MonoBehaviour {
 	 * Gestion du zoom de la caméra 
 	 */
 	void ZoomHandler(){
+		if (!activateZoom)
+			return;
+
 		float zooming = Input.mouseScrollDelta.y;
 		if(zooming != 0){ // scroll up ou down
 			float toY = camerasPosition.position.y + (zooming * zoomSensibility) / 10f;
