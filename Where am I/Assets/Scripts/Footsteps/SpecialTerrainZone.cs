@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SpecialTerrainZone : MonoBehaviour {
 	
-	public AudioClip footstepsSound;
+	/*public AudioClip footstepsSound;
 
 	private AudioClip previousFootstepsSound;
 	private AudioSource playerFootstepsSource;
@@ -29,5 +29,5 @@ public class SpecialTerrainZone : MonoBehaviour {
 
 	void OnTriggerExit(){
 		playerFootstepsSource.clip = previousFootstepsSound;
-	}
+	}*/
 }
