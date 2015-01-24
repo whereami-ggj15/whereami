@@ -6,12 +6,6 @@ public class PlayerKeyboardController : MonoBehaviour {
 	public float speedMove = 5000.0f;
 	public float speedRotate = 80.0f;
 	
-	private Rigidbody rigidbody;
-	
-	void Awake(){
-		rigidbody = GetComponent<Rigidbody> ();
-	}
-	
 	void FixedUpdate(){
 		
 		float horizontal = Input.GetAxis("Horizontal");
@@ -33,7 +27,7 @@ public class PlayerKeyboardController : MonoBehaviour {
 
 		Vector3 direction = transform.forward * vertical;
 
-		Debug.Log(direction);
+		//Debug.Log(rigidbody.velocity);
 		//Vector3 force = new Vector3(leftStick.x, 0.0f, leftStick.y);
 		rigidbody.AddForce(direction * speedMove * Time.deltaTime);
 		

@@ -3,18 +3,20 @@ using System.Collections;
 
 public class SpecialTerrainZone : MonoBehaviour {
 	
-	/*public AudioClip footstepsSound;
+	public AudioClip footstepsSound;
 
-	private AudioClip previousFootstepsSound;
-	private AudioSource playerFootstepsSource;
+	private GameObject player;
+	private PlayerFootsteps footsteps;
 
 	// Use this for initialization
 	void Start () {
 		string playerObjectName = "player";
-		playerFootstepsSource = GameObject.Find(playerObjectName).GetComponent<AudioSource>();
-		previousFootstepsSound = playerFootstepsSource.clip;
-		if(playerFootstepsSource == null){
+		player = GameObject.Find(playerObjectName);
+	
+		if(player == null){
 			Debug.LogWarning(gameObject.name + " can't find player's footsteps audio source", this);
+		} else {
+			footsteps = player.GetComponentInChildren<PlayerFootsteps>();
 		}
 
 		if(footstepsSound == null){
@@ -22,12 +24,15 @@ public class SpecialTerrainZone : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter(){
-
-		playerFootstepsSource.clip = footstepsSound;
+	void OnTriggerEnter(Collider other){
+		if(other.tag == "Player"){
+			footsteps.SetFootstepsSound(footstepsSound);
+		}
 	}
 
-	void OnTriggerExit(){
-		playerFootstepsSource.clip = previousFootstepsSound;
-	}*/
+	void OnTriggerExit(Collider other){
+		if(other.tag == "Player"){
+			footsteps.ResetToDefault();
+		}
+	}
 }
