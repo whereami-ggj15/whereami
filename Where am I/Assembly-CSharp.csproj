@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\GamePadInput\GamePad.cs" />
      <Compile Include="Assets\MicControl\C# version\MicControlC.cs" />
+     <Compile Include="Assets\Scripts\Events\BatTrigger.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <None Include="Assets\MicControl\C# version\ReadMe.txt" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
