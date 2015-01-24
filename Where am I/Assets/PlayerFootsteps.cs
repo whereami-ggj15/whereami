@@ -11,7 +11,7 @@ public class PlayerFootsteps : MonoBehaviour {
 	public float minSpeed = 0.5f;
 
 	void Start(){
-		string playerObjectName = "player";
+		string playerObjectName = "Player";
 		player = GameObject.Find(playerObjectName);
 		if(player == null){
 			Debug.LogWarning(gameObject.name + " can't find player");

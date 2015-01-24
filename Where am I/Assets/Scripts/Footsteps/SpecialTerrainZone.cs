@@ -10,7 +10,7 @@ public class SpecialTerrainZone : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		string playerObjectName = "player";
+		string playerObjectName = "Player";
 		player = GameObject.Find(playerObjectName);
 	
 		if(player == null){
