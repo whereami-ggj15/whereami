@@ -3,14 +3,18 @@ using System.Collections;
 
 public class AnimatorController : MonoBehaviour {
 
-	public float sensibility = 10.0f;
+	public float zoomSensibility = 10.0f;
+	public float dragSensibility = 10.0f;
 	public Transform camerasPosition; // represente le gameobject qui contient les deux caméras de rendu
 
 	private float maxHeight = 80.0f;
 	private float minHeight = 30.0f;
 
+	private bool isDragging = false;
+	private Vector3 startPoint;
+
 	void Awake(){
-		sensibility += 1.0f;
+		zoomSensibility += 1.0f;
 	}
 
 	// Update is called once per frame
@@ -23,8 +27,25 @@ public class AnimatorController : MonoBehaviour {
 	 * Gestion des clicks sur l'interface
 	 */
 	void InputHandler(){
-		// gestion du zoom
+		if (Input.GetMouseButtonDown (2)){ // clique centre
+			if(!isDragging || startPoint == Vector3.zero)
+				startPoint = Input.mousePosition;
 
+			isDragging = true;
+		}
+		if(Input.GetMouseButtonUp(2)){
+		    isDragging = false;
+			startPoint = Vector3.zero;
+		}
+
+		if(isDragging){
+			Vector3 distance = startPoint - Input.mousePosition;
+			distance *= dragSensibility / 200f;
+
+			Debug.Log("mouse : " + Input.mousePosition);
+			camerasPosition.position = new Vector3(camerasPosition.position.x + distance.x, camerasPosition.position.y, camerasPosition.position.z + distance.y);
+			startPoint = Input.mousePosition;
+		}
 	}
 
 	/**
@@ -33,7 +54,7 @@ public class AnimatorController : MonoBehaviour {
 	void ZoomHandler(){
 		float zooming = Input.mouseScrollDelta.y;
 		if(zooming != 0){ // scroll up ou down
-			float toY = camerasPosition.position.y + (zooming * sensibility) / 10f;
+			float toY = camerasPosition.position.y + (zooming * zoomSensibility) / 10f;
 			
 			if(toY >= maxHeight)
 				toY = maxHeight;
