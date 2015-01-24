@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour {
 
 	public float speedMove = 10.0F;
 	public float speedRotate = 80.0F;
-
+	
 	void Update(){
 		Vector2 leftStick = GamePad.GetAxis(GamePad.Axis.LeftStick, GamePad.Index.Any);
 		Vector2 rightStick = GamePad.GetAxis(GamePad.Axis.RightStick, GamePad.Index.Any);

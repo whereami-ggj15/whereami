@@ -1,10 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\..\..\Public\Documents\Unity Projects\PERSO\2DGame\Assets\Scripts\PlayerController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerController.cs">
     <Files>
-      <File FileName="..\..\..\..\..\Public\Documents\Unity Projects\PERSO\2DGame\Assets\Scripts\PlayerController.cs" Line="9" Column="2" />
-      <File FileName="Assets\MicrophoneRecorder.cs" Line="28" Column="1" />
-      <File FileName="Assets\MicControl\C# version\ReadMe.txt" Line="19" Column="45" />
+      <File FileName="Assets\GamePadInput\GamePad.cs" Line="3" Column="27" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="8" Column="35" />
+      <File FileName="Assets\Scripts\Footsteps\SpecialTerrainZone.cs" Line="14" Column="65" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
