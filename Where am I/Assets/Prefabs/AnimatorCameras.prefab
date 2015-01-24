@@ -46,6 +46,7 @@ GameObject:
   - 124: {fileID: 12402580}
   - 92: {fileID: 9202580}
   - 114: {fileID: 11402580}
+  - 114: {fileID: 11498186}
   m_Layer: 0
   m_Name: GlowCam
   m_TagString: MainCamera
@@ -191,6 +192,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9f288af8cbb8ab4aadbde15b4912dd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11498186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d1352984e3c6465088f6cc7c4ce6e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glowIntensity: 1.34000003
+  blurIterations: 2
+  blurSpread: .5
+  glowTint: {r: .133055791, g: .597414553, b: .786764741, a: 0}
+  compositeShader: {fileID: 4800000, guid: 96ca71e39c7b6fb4f9bec2c5bf331349, type: 3}
+  blurShader: {fileID: 4800000, guid: fb52973118cf00648825ced2fcca240c, type: 3}
+  downsampleShader: {fileID: 4800000, guid: b14b79b8936134d3f8238f0c2d40d634, type: 3}
 --- !u!124 &12402578
 Behaviour:
   m_ObjectHideFlags: 1
