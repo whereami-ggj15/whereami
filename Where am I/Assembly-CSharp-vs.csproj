@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\GamePadInput\GamePad.cs" />
      <Compile Include="Assets\MicControl\C# version\MicControlC.cs" />
+     <Compile Include="Assets\PlaySoundOnEnter.cs" />
      <Compile Include="Assets\PlayerFootsteps.cs" />
      <Compile Include="Assets\PlayerKeyboardController.cs" />
      <Compile Include="Assets\Scripts\Events\BatTrigger.cs" />
