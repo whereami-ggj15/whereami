@@ -27,7 +27,7 @@ public class PlayerFootsteps : MonoBehaviour {
 	}
 
 	void Update(){
-		Debug.Log(player.rigidbody.velocity + " min: " + minSpeed);
+		//Debug.Log(player.rigidbody.velocity + " min: " + minSpeed);
 		if(Mathf.Abs(player.rigidbody.velocity.x) > minSpeed || Mathf.Abs(player.rigidbody.velocity.z) > minSpeed){
 			if(!isPlaying){
 				PlaySound();
