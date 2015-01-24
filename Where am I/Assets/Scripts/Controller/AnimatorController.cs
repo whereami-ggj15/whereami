@@ -11,20 +11,26 @@ public class AnimatorController : MonoBehaviour {
 	public bool activateDrag = false;
 	public bool activateClick = true;
 
-	private float maxHeight = 80.0f;
-	private float minHeight = 30.0f;
+	public GameObject pingObject;
 
+	private float maxHeight = 80.0f; // zoom
+	private float minHeight = 30.0f; // zoom
 	private bool isDragging = false;
-	private Vector3 startPoint;
+	private Vector3 startPoint; //dragging
+	
+	int floorMask;
+	float camRayLenght = 100;
 
 	void Awake(){
 		zoomSensibility += 1.0f;
+		floorMask = LayerMask.GetMask ("Ground");
 	}
 
 	// Update is called once per frame
 	void Update () {
 		ZoomHandler ();
-		InputHandler ();
+		DragHandler ();
+		ClickHandler ();
 	}
 
 	/**
@@ -33,6 +39,19 @@ public class AnimatorController : MonoBehaviour {
 	void ClickHandler(){
 		if (!activateClick)
 			return;
+
+		if(Input.GetMouseButtonDown(0)){
+			Ray camRay = Camera.main.ScreenPointToRay (Input.mousePosition);
+			RaycastHit floorHit;
+			
+			if (Physics.Raycast (camRay, out floorHit, camRayLenght, floorMask))
+			{
+				Vector3 clickPosition = floorHit.point - transform.position;
+				clickPosition.y = 0f;
+
+				Instantiate(pingObject, clickPosition, Quaternion.identity);
+			}
+		}
 	}
 
 	/**
