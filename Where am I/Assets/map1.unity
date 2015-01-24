@@ -1527,9 +1527,8 @@ MonoBehaviour:
   turnLeft: 113
   strafeRight: 101
   strafeLeft: 97
-  speedMove: 5000
-  speedRotate: 80
-  joystickTolerance: .200000003
+  walkToggle: 304
+  throwRock: 32
 --- !u!54 &775727712
 Rigidbody:
   m_ObjectHideFlags: 0

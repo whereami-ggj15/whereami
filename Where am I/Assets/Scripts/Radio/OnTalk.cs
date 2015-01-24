@@ -15,7 +15,7 @@ public class OnTalk : MonoBehaviour {
 
 	void Update(){
 		float loudness = input.loudness;
-		Debug.Log (loudness);
+		//Debug.Log (loudness);
 
 		if (loudness > minLoudnessToTrigger && !noise.isPlaying){
 			noise.Play (); // play le bruit de communication
