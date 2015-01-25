@@ -3,8 +3,9 @@ using System.Collections;
 
 public class rock : MonoBehaviour {
 
-	public AudioClip collisionSoundRock;
-	public AudioClip collisionSoundWater;
+	public AudioClip collisionSoundRockGround;
+	public AudioClip collisionSoundRockWalls;
+	public AudioClip collisionSoundRockWater;
 
 	private static bool isThrowing = false;
 	private static GameObject rockGameObject;
@@ -32,9 +33,14 @@ public class rock : MonoBehaviour {
 		}
 	}
 
-	private void OnCollisionEnter(Collision ground){
+	private void OnCollisionEnter(Collision other){
 		Debug.Log("Rock collision !");
-		audioPlayer.PlayOneShot(collisionSoundRock);
+		if (other.gameObject.tag == "GroundMap")
+			audioPlayer.PlayOneShot(collisionSoundRockGround);
+		if (other.gameObject.tag == "WallsMap")
+			audioPlayer.PlayOneShot(collisionSoundRockWalls);
+		if (other.gameObject.tag == "WaterMap")
+			audioPlayer.PlayOneShot(collisionSoundRockWater);
 	}
 
 	private void Start(){

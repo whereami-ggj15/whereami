@@ -527,11 +527,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 415182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.4000001
+      value: -.5
       objectReference: {fileID: 0}
     - target: {fileID: 415182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 6.80000114
+      value: 6.80000019
       objectReference: {fileID: 0}
     - target: {fileID: 415182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
       propertyPath: m_LocalRotation.x
@@ -560,6 +560,14 @@ Prefab:
     - target: {fileID: 415182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
       propertyPath: m_LocalScale.x
       value: 30.7999992
+      objectReference: {fileID: 0}
+    - target: {fileID: 115182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
+      propertyPath: m_TagString
+      value: WaterMap
+      objectReference: {fileID: 0}
+    - target: {fileID: 115182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
+      propertyPath: m_Layer
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
@@ -1251,9 +1259,9 @@ GameObject:
   - 114: {fileID: 366450974}
   - 23: {fileID: 366450973}
   - 33: {fileID: 366450972}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: SpecialTerrainWaterZone
-  m_TagString: Untagged
+  m_TagString: WaterMap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1265,7 +1273,7 @@ Transform:
   m_PrefabInternal: {fileID: 1038776833}
   m_GameObject: {fileID: 366450970}
   m_LocalRotation: {x: 0, y: .598795593, z: 0, w: .800901949}
-  m_LocalPosition: {x: 74.1699982, y: 4.4000001, z: 50.4000015}
+  m_LocalPosition: {x: 74.1999969, y: -.5, z: 50.4000015}
   m_LocalScale: {x: 44.200016, y: 11.6999998, z: 29.2000122}
   m_Children: []
   m_Father: {fileID: 1720125328}
@@ -1409,9 +1417,9 @@ GameObject:
   - 23: {fileID: 382808543}
   - 95: {fileID: 382808542}
   - 64: {fileID: 382808546}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: solcoque
-  m_TagString: Ground
+  m_TagString: GroundMap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1500,7 +1508,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 415182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.4000001
+      value: -.5
       objectReference: {fileID: 0}
     - target: {fileID: 415182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1537,6 +1545,14 @@ Prefab:
     - target: {fileID: 415182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
       propertyPath: m_LocalScale.z
       value: 26.6000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 115182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
+      propertyPath: m_TagString
+      value: WaterMap
+      objectReference: {fileID: 0}
+    - target: {fileID: 115182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
+      propertyPath: m_Layer
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
@@ -3267,7 +3283,7 @@ Transform:
   m_PrefabInternal: {fileID: 1714058300}
   m_GameObject: {fileID: 775727706}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.34000015, y: 1.20000005, z: 4.21000004}
+  m_LocalPosition: {x: 4.61000013, y: 1.20000005, z: .75999999}
   m_LocalScale: {x: 2, y: 1, z: 2}
   m_Children:
   - {fileID: 1800281478}
@@ -3277,6 +3293,7 @@ Transform:
   - {fileID: 1114917144}
   - {fileID: 1881271328}
   - {fileID: 1204420228}
+  - {fileID: 1587858104}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!114 &775727711
@@ -3298,7 +3315,12 @@ MonoBehaviour:
   strafeRight: 101
   strafeLeft: 97
   walkToggle: 304
+  rotate45Left: 119
+  rotate45Right: 99
   throwRock: 32
+  placeBackWall: 306
+  communication: {fileID: 1370014910}
+  noiseCommunication: {fileID: 1896901674}
 --- !u!54 &775727712
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3486,7 +3508,7 @@ GameObject:
   - 23: {fileID: 812243714}
   m_Layer: 9
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3855,9 +3877,9 @@ GameObject:
   - 23: {fileID: 992504152}
   - 95: {fileID: 992504151}
   - 64: {fileID: 992504150}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: murcoque
-  m_TagString: Walls
+  m_TagString: WallsMap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4172,11 +4194,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 415182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 74.1699982
+      value: 74.1999969
       objectReference: {fileID: 0}
     - target: {fileID: 415182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.4000001
+      value: -.5
       objectReference: {fileID: 0}
     - target: {fileID: 415182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4213,6 +4235,14 @@ Prefab:
     - target: {fileID: 415182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
       propertyPath: m_LocalScale.z
       value: 29.2000122
+      objectReference: {fileID: 0}
+    - target: {fileID: 115182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
+      propertyPath: m_TagString
+      value: WaterMap
+      objectReference: {fileID: 0}
+    - target: {fileID: 115182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
+      propertyPath: m_Layer
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
@@ -4306,6 +4336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb297c102f5bc92489e597f413d9b32b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 98dee5a09ba4d1140aac783b2c319ced, type: 3}
+  movementLevelDetection: .200000003
 --- !u!82 &1039949961
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4317,7 +4349,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4403,6 +4435,10 @@ Prefab:
     - target: {fileID: 476712, guid: 976f88906ce635448826eac9e77449ee, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 176712, guid: 976f88906ce635448826eac9e77449ee, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 976f88906ce635448826eac9e77449ee, type: 2}
@@ -4715,6 +4751,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb297c102f5bc92489e597f413d9b32b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: a1df448bbd7c7cf47ada628938602c3a, type: 3}
+  movementLevelDetection: .200000003
 --- !u!82 &1114917146
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4726,7 +4764,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5877,9 +5915,9 @@ GameObject:
   - 114: {fileID: 1363351622}
   - 23: {fileID: 1363351621}
   - 33: {fileID: 1363351620}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: SpecialTerrainWaterZone
-  m_TagString: Untagged
+  m_TagString: WaterMap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5946,7 +5984,7 @@ Transform:
   m_PrefabInternal: {fileID: 142541346}
   m_GameObject: {fileID: 1363351619}
   m_LocalRotation: {x: 0, y: .795323551, z: 0, w: .606185257}
-  m_LocalPosition: {x: -20.7000008, y: 4.4000001, z: 6.80000114}
+  m_LocalPosition: {x: -20.7000008, y: -.5, z: 6.80000019}
   m_LocalScale: {x: 30.7999992, y: 11.6999998, z: 9}
   m_Children: []
   m_Father: {fileID: 1720125328}
@@ -6709,9 +6747,9 @@ GameObject:
   - 114: {fileID: 1575300930}
   - 23: {fileID: 1575300929}
   - 33: {fileID: 1575300928}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: SpecialTerrainWaterZone
-  m_TagString: Untagged
+  m_TagString: WaterMap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6723,7 +6761,7 @@ Transform:
   m_PrefabInternal: {fileID: 1759105838}
   m_GameObject: {fileID: 1575300926}
   m_LocalRotation: {x: 0, y: .795323849, z: 0, w: .6061849}
-  m_LocalPosition: {x: 1.29999995, y: 4.4000001, z: 37.2999992}
+  m_LocalPosition: {x: 1.29999995, y: -.5, z: 37.2999992}
   m_LocalScale: {x: 44.2000008, y: 11.6999998, z: 29.2000008}
   m_Children: []
   m_Father: {fileID: 1720125328}
@@ -6783,6 +6821,123 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1578171939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: fce82dcb21c4d3a4b9bd95f7ea46063c, type: 3}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1578171940}
+  - 33: {fileID: 1578171942}
+  - 23: {fileID: 1578171941}
+  m_Layer: 0
+  m_Name: Bo__te001
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1578171940
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: fce82dcb21c4d3a4b9bd95f7ea46063c, type: 3}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1578171939}
+  m_LocalRotation: {x: .245053381, y: -.663286388, z: -.663286388, w: -.245053381}
+  m_LocalPosition: {x: -19, y: 19.7000008, z: 20.6000004}
+  m_LocalScale: {x: 2.75738978, y: 2.75738978, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1587858104}
+  m_RootOrder: 0
+--- !u!23 &1578171941
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300000, guid: fce82dcb21c4d3a4b9bd95f7ea46063c,
+    type: 3}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1578171939}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 7beca3ddf5d37e7428318125f1b0c444, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &1578171942
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300000, guid: fce82dcb21c4d3a4b9bd95f7ea46063c,
+    type: 3}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1578171939}
+  m_Mesh: {fileID: 4300002, guid: fce82dcb21c4d3a4b9bd95f7ea46063c, type: 3}
+--- !u!1 &1587858103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100004, guid: fce82dcb21c4d3a4b9bd95f7ea46063c, type: 3}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1587858104}
+  - 95: {fileID: 1587858106}
+  - 136: {fileID: 1587858105}
+  m_Layer: 0
+  m_Name: POINTEUR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1587858104
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400004, guid: fce82dcb21c4d3a4b9bd95f7ea46063c, type: 3}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1587858103}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .994999886, y: -1.20000005, z: -.125}
+  m_LocalScale: {x: .0500000007, y: .100000001, z: .0500000007}
+  m_Children:
+  - {fileID: 1578171940}
+  m_Father: {fileID: 775727710}
+  m_RootOrder: 7
+--- !u!136 &1587858105
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1587858103}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: .5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &1587858106
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 9500000, guid: fce82dcb21c4d3a4b9bd95f7ea46063c,
+    type: 3}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1587858103}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: fce82dcb21c4d3a4b9bd95f7ea46063c, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1631596990
 GameObject:
   m_ObjectHideFlags: 0
@@ -7151,6 +7306,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb297c102f5bc92489e597f413d9b32b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: cff125e8291b45c40a3dd77b7688a594, type: 3}
+  movementLevelDetection: .200000003
 --- !u!82 &1645224841
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7162,7 +7319,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7575,7 +7732,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 407404, guid: d218b93ac55892f488f207025f0b149e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 8.34000015
+      value: 4.61000013
       objectReference: {fileID: 0}
     - target: {fileID: 407404, guid: d218b93ac55892f488f207025f0b149e, type: 2}
       propertyPath: m_LocalPosition.y
@@ -7583,7 +7740,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 407404, guid: d218b93ac55892f488f207025f0b149e, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 4.21000004
+      value: .75999999
       objectReference: {fileID: 0}
     - target: {fileID: 407404, guid: d218b93ac55892f488f207025f0b149e, type: 2}
       propertyPath: m_LocalRotation.x
@@ -7604,6 +7761,54 @@ Prefab:
     - target: {fileID: 407404, guid: d218b93ac55892f488f207025f0b149e, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11407404, guid: d218b93ac55892f488f207025f0b149e, type: 2}
+      propertyPath: sound
+      value: 
+      objectReference: {fileID: 8300000, guid: 98dee5a09ba4d1140aac783b2c319ced, type: 3}
+    - target: {fileID: 11407396, guid: d218b93ac55892f488f207025f0b149e, type: 2}
+      propertyPath: sound
+      value: 
+      objectReference: {fileID: 8300000, guid: cff125e8291b45c40a3dd77b7688a594, type: 3}
+    - target: {fileID: 11407402, guid: d218b93ac55892f488f207025f0b149e, type: 2}
+      propertyPath: sound
+      value: 
+      objectReference: {fileID: 8300000, guid: a1df448bbd7c7cf47ada628938602c3a, type: 3}
+    - target: {fileID: 11407394, guid: d218b93ac55892f488f207025f0b149e, type: 2}
+      propertyPath: sound
+      value: 
+      objectReference: {fileID: 8300000, guid: a1df448bbd7c7cf47ada628938602c3a, type: 3}
+    - target: {fileID: 11407406, guid: d218b93ac55892f488f207025f0b149e, type: 2}
+      propertyPath: communication
+      value: 
+      objectReference: {fileID: 1370014910}
+    - target: {fileID: 11407406, guid: d218b93ac55892f488f207025f0b149e, type: 2}
+      propertyPath: noiseCommunication
+      value: 
+      objectReference: {fileID: 1896901674}
+    - target: {fileID: 8207402, guid: d218b93ac55892f488f207025f0b149e, type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207394, guid: d218b93ac55892f488f207025f0b149e, type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207406, guid: d218b93ac55892f488f207025f0b149e, type: 2}
+      propertyPath: m_Volume
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207404, guid: d218b93ac55892f488f207025f0b149e, type: 2}
+      propertyPath: m_Volume
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207400, guid: d218b93ac55892f488f207025f0b149e, type: 2}
+      propertyPath: m_Volume
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207396, guid: d218b93ac55892f488f207025f0b149e, type: 2}
+      propertyPath: m_Volume
+      value: .5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d218b93ac55892f488f207025f0b149e, type: 2}
@@ -7654,7 +7859,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 415182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.4000001
+      value: -.5
       objectReference: {fileID: 0}
     - target: {fileID: 415182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
       propertyPath: m_LocalPosition.z
@@ -7691,6 +7896,14 @@ Prefab:
     - target: {fileID: 415182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
       propertyPath: m_LocalScale.z
       value: 29.2000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 115182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
+      propertyPath: m_TagString
+      value: WaterMap
+      objectReference: {fileID: 0}
+    - target: {fileID: 115182, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
+      propertyPath: m_Layer
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 137ce1be65418e64c90a2cc211d031c0, type: 2}
@@ -7773,6 +7986,22 @@ Prefab:
     - target: {fileID: 103544, guid: 574b29a5f69a3b344ad2500c3c9aef02, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 103542, guid: 574b29a5f69a3b344ad2500c3c9aef02, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 103544, guid: 574b29a5f69a3b344ad2500c3c9aef02, type: 2}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 103544, guid: 574b29a5f69a3b344ad2500c3c9aef02, type: 2}
+      propertyPath: m_TagString
+      value: GroundMap
+      objectReference: {fileID: 0}
+    - target: {fileID: 103542, guid: 574b29a5f69a3b344ad2500c3c9aef02, type: 2}
+      propertyPath: m_TagString
+      value: WallsMap
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 574b29a5f69a3b344ad2500c3c9aef02, type: 2}
@@ -7875,6 +8104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb297c102f5bc92489e597f413d9b32b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: a1df448bbd7c7cf47ada628938602c3a, type: 3}
+  movementLevelDetection: .200000003
 --- !u!82 &1881271330
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7886,7 +8117,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8130,7 +8361,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 0d1c06b4d9395b04794c6e77744b51f1, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: .215000004
   m_Pitch: 1
   Loop: 1
@@ -8299,9 +8530,9 @@ GameObject:
   - 114: {fileID: 2063844311}
   - 23: {fileID: 2063844310}
   - 33: {fileID: 2063844309}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: SpecialTerrainWaterZone
-  m_TagString: Untagged
+  m_TagString: WaterMap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8313,7 +8544,7 @@ Transform:
   m_PrefabInternal: {fileID: 388792804}
   m_GameObject: {fileID: 2063844307}
   m_LocalRotation: {x: 0, y: .598795831, z: 0, w: .800901771}
-  m_LocalPosition: {x: 50.5, y: 4.4000001, z: -20.6000004}
+  m_LocalPosition: {x: 50.5, y: -.5, z: -20.6000004}
   m_LocalScale: {x: 16.7000008, y: 11.6999998, z: 26.6000004}
   m_Children: []
   m_Father: {fileID: 1720125328}

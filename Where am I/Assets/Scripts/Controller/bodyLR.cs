@@ -4,11 +4,10 @@ using System.Collections;
 public class bodyLR : MonoBehaviour {
 
 	public AudioClip sound;
-	public float movementLevelDetection = 0.2F;
+	public float movementLevelDetection = 0.1F;
 	public enum e_dir {NONE, FRONT, BACK, RIGHT, LEFT }
 
 	private PlayerController controller;
-	private AudioSource audioPlayer;
 	private bool isTouching = false;
 	private bool soundLock = false;
 	private bool canIPlay = true;
@@ -17,7 +16,6 @@ public class bodyLR : MonoBehaviour {
 
 	private void Start(){
 		controller = GetComponentInParent<PlayerController>();
-		audioPlayer = GetComponent<AudioSource>();
 	}
 
 	private void FixedUpdate(){
@@ -39,7 +37,7 @@ public class bodyLR : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter(Collider other){
-		if (other.gameObject.tag == "Walls"){
+		if (other.gameObject.tag == "WallsMap"){
 			if (this.tag == "bodyLeft"){
 				Debug.Log ("Le joueur se frotte contre un mur left");
 				controller.gamePadShake(10.0F, 0.0F);
@@ -68,7 +66,7 @@ public class bodyLR : MonoBehaviour {
 	}
 
 	private void OnTriggerExit(Collider other){
-		if (other.gameObject.tag == "Walls"){
+		if (other.gameObject.tag == "WallsMap"){
 			if (this.tag == "bodyLeft"){
 				Debug.Log ("Le joueur se frottait contre un mur left");
 				controller.gamePadShake(0.0F, 0.0F);

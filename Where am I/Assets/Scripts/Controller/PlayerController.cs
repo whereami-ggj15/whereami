@@ -16,7 +16,10 @@ public class PlayerController : MonoBehaviour {
 	public KeyCode rotate45Right = KeyCode.C;
 	public KeyCode throwRock = KeyCode.Space;
 	public KeyCode placeBackWall = KeyCode.LeftControl;
+	public AudioSource communication;
+	public AudioSource noiseCommunication;
 
+	private float incrementationVolume = 0.1F; //niveau d'inc/déc pour changer le volume de la radio
 	private float speedMove = 150.0f; //vitesse de déplacement du joueur
 	private float speedRotate = 100.0f; //vitesse de rotation du joueur
 	private float joystickTolerance = 0.2F; //tolérence à la détection d'un mouvement sur les joysticks du gamepad
@@ -79,10 +82,14 @@ public class PlayerController : MonoBehaviour {
 			transform.Rotate(0, cranRotate, 0);
 		if (GamepadInput.GamePad.GetButtonDown(GamepadInput.GamePad.Button.LeftShoulder, GamepadInput.GamePad.Index.Any))
 			transform.Rotate(0, -cranRotate, 0);
-		if (GamepadInput.GamePad.GetButtonDown(GamepadInput.GamePad.Button.Y, GamepadInput.GamePad.Index.Any))
-			Debug.Log ("monter le son de la radio");
-		if (GamepadInput.GamePad.GetButtonDown(GamepadInput.GamePad.Button.A, GamepadInput.GamePad.Index.Any))
-			Debug.Log ("descendre le son de la radio");
+		if (GamepadInput.GamePad.GetButtonDown(GamepadInput.GamePad.Button.Y, GamepadInput.GamePad.Index.Any)){
+			noiseCommunication.volume += incrementationVolume;
+			communication.volume += incrementationVolume;
+		}
+		if (GamepadInput.GamePad.GetButtonDown(GamepadInput.GamePad.Button.A, GamepadInput.GamePad.Index.Any) && communication.volume > 0.1F){
+			noiseCommunication.volume -= incrementationVolume;
+			communication.volume -= incrementationVolume;
+		}
 		
 		if (leftStick.y > joystickTolerance || leftStick.y < -joystickTolerance)
 			rigidbody.AddForce(transform.TransformDirection(Vector3.forward) * leftStick.y * speedMove);

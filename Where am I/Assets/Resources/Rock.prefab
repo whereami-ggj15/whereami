@@ -156,8 +156,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e95dbcb530b47043a3bc5f330dd79a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionSoundRock: {fileID: 8300000, guid: b07cf88aded61d94fa991044cc2274e0, type: 3}
-  collisionSoundWater: {fileID: 8300000, guid: 802c26e51f96f72449ed7891b4a26a41, type: 3}
+  collisionSoundRockGround: {fileID: 8300000, guid: bf545cbdde378e247a857591cf430ef8,
+    type: 3}
+  collisionSoundRockWalls: {fileID: 8300000, guid: e12115cedc57efd4cb0d87eaac4bb9e1,
+    type: 3}
+  collisionSoundRockWater: {fileID: 8300000, guid: 802c26e51f96f72449ed7891b4a26a41,
+    type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
