@@ -92,7 +92,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .170000002, y: -2.36999989, z: 0}
+  m_LocalPosition: {x: 4.46999979, y: 3.67000008, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 453674}
@@ -215,7 +215,7 @@ AudioSource:
   m_GameObject: {fileID: 153680}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: c30c4598048d1ff4388c3d1ce48f69b4, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a582ebcb67ee352449c7309f90e6af49, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -273,7 +273,7 @@ AudioSource:
   m_GameObject: {fileID: 153674}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 46f2d614bb6b5424cb8dc6372fc1578a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a7a03de0e2489264f95e5bb9cffdadc7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -400,7 +400,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 153672}
   m_Enabled: 1
   m_Radius: .5
-  m_Speed: .75
+  m_Speed: .850000024
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

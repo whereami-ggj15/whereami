@@ -181,6 +181,7 @@ GameObject:
   - 114: {fileID: 11407406}
   - 54: {fileID: 5407406}
   - 81: {fileID: 8107404}
+  - 114: {fileID: 11464344}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -322,7 +323,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.21000004, z: 0}
+  m_LocalPosition: {x: 2.50999999, y: 1.21000004, z: -21.25}
   m_LocalScale: {x: 2, y: 1, z: 2}
   m_Children:
   - {fileID: 407392}
@@ -524,7 +525,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 1
   Mute: 0
-  Priority: 153
+  Priority: 202
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1082,6 +1083,18 @@ MonoBehaviour:
   strafeLeft: 97
   walkToggle: 304
   throwRock: 32
+--- !u!114 &11464344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a691479e38cba034b8485c273041b7e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallSound: {fileID: 0}
 --- !u!136 &13607398
 CapsuleCollider:
   m_ObjectHideFlags: 1

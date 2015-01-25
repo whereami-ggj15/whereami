@@ -21,7 +21,7 @@ public class AttackPlayer : MonoBehaviour {
 				if(!audio.isPlaying){
 					audio.Play();
 				}
-				other.SendMessage("Die");
+				other.SendMessage("GameOver");
 			}
 		}
 	}
