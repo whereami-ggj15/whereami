@@ -51,8 +51,10 @@ public class AnimatorController : MonoBehaviour {
 			RaycastHit floorHit;
 			
 			if (Physics.Raycast (camRay, out floorHit, camRayLenght, floorMask)){
-				Vector3 clickPosition = floorHit.point - transform.position;
+				Vector3 clickPosition = floorHit.point ;
 				clickPosition.y = 0f;
+
+				//Debug.DrawLine(camerasPosition.position, camRay.origin + camRay.direction * camRayLenght, Color.red, 10.0f);
 				
 				pingInstantiate = (GameObject) Instantiate(pingObject, clickPosition, Quaternion.identity);
 				Destroy(pingInstantiate, delayToPing);

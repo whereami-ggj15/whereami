@@ -10,6 +10,8 @@ public class SpecialTerrainZone : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		GetComponent<MeshRenderer> ().enabled = false;
+
 		string playerObjectName = "Player";
 		player = GameObject.Find(playerObjectName);
 	

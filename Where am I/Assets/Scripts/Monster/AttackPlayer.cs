@@ -18,10 +18,10 @@ public class AttackPlayer : MonoBehaviour {
 				if(chaseSoundSource != null && chaseSoundSource.isPlaying){
 					chaseSoundSource.Stop();
 				}
-				if(!audio.isPlaying){
+				/*if(!audio.isPlaying){
 					audio.Play();
-				}
-				other.SendMessage("Die");
+				}*/
+				other.SendMessage("MonsterDeath");
 			}
 		}
 	}
