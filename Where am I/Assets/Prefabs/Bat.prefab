@@ -79,7 +79,7 @@ AudioSource:
   m_GameObject: {fileID: 136990}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: cdd9939dcdadb934bb2a8b0b69804c7c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e962931d269b218459d6097532d388a3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bat: {fileID: 136990}
+  toTrigger: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

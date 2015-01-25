@@ -7,16 +7,21 @@ public class MonsterPingDetection : MonoBehaviour {
 	private GameObject monster;
 	private NavMeshAgent navigation;
 
+	private int layerPing;
+
 	// Use this for initialization
 	void Start () {
+		layerPing = LayerMask.NameToLayer ("Ping");
 		monster = transform.parent.gameObject;
 		if(monster != null){
 			navigation = monster.GetComponent<NavMeshAgent>();
 		}
 	}
-	
-	void OnTriggerEnter(Collider other){
-		if(other.tag == "Ping"){
+
+
+	void OnTriggerStay(Collider other){
+		Debug.Log (other.tag);
+		if(other.gameObject.tag == "Ping"){
 			navigation.SetDestination(other.transform.position);
 		}
 	}

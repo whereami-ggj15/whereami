@@ -9,6 +9,8 @@ public class BatTrigger : MonoBehaviour {
 	Animator animator;
 	GameObject player;
 
+	public int toTrigger = 1;
+
 	void Awake(){
 		player = GameObject.FindGameObjectWithTag ("Player");
 		if (bat != null) {
@@ -19,7 +21,8 @@ public class BatTrigger : MonoBehaviour {
 
 
 	void OnTriggerEnter (Collider other) {
-		if (other.gameObject == player){
+		toTrigger--;
+		if (other.gameObject == player && toTrigger <= 0){
 			animator.SetTrigger ("activate");
 			batSource.Play();
 		}
