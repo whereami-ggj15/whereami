@@ -45,12 +45,6 @@ public class rock : MonoBehaviour {
 		}
 	}
 
-	private void OnTriggerEnter(Collision other){
-		if (other.gameObject.tag == "WaterMap"){
-			audioPlayer.PlayOneShot(collisionSoundRockWater);
-			rigidbody.detectCollisions = false;
-		}
-	}
 
 	private void Start(){
 		audioPlayer = GetComponent<AudioSource>();
