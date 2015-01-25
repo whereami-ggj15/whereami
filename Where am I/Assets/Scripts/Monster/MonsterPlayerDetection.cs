@@ -8,14 +8,14 @@ public class MonsterPlayerDetection : MonoBehaviour {
 	private GameObject monster;
 	private NavMeshAgent navigation;
 	private AudioSource idleSoundSource;
-	private AudioSource attackSoundSource;
+	//private AudioSource attackSoundSource;
 	// Use this for initialization
 	void Start () {
 		monster = transform.parent.gameObject;
 		if(monster != null){
 			navigation = monster.GetComponent<NavMeshAgent>();
 			idleSoundSource = monster.transform.Find("Growls").GetComponent<AudioSource>();
-			attackSoundSource = gameObject.transform.FindChild("AttackPlayer").GetComponent<AudioSource>();
+			//attackSoundSource = gameObject.transform.FindChild("AttackPlayer").GetComponent<AudioSource>();
 		}
 	}
 
@@ -29,10 +29,10 @@ public class MonsterPlayerDetection : MonoBehaviour {
 			if(!hitWall){
 				// go get him !
 				if(idleSoundSource.isPlaying){
-					idleSoundSource.Stop();
+					//idleSoundSource.Stop();
 				}
 
-				if(!audio.isPlaying && !attackSoundSource.isPlaying){
+				if(!audio.isPlaying /*&& !attackSoundSource.isPlaying*/){
 					audio.Play();
 				}
 				navigation.SetDestination(other.transform.position);
@@ -42,7 +42,8 @@ public class MonsterPlayerDetection : MonoBehaviour {
 
 	void OnTriggerExit(Collider other){
 		if(other.tag == "Player"){
-			idleSoundSource.Play();
+			//idleSoundSource.Play();
+			audio.Stop();
 		}
 	}
 

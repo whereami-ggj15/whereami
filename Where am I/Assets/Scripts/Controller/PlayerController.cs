@@ -12,23 +12,25 @@ public class PlayerController : MonoBehaviour {
 	public KeyCode strafeRight = KeyCode.E;
 	public KeyCode strafeLeft = KeyCode.A;
 	public KeyCode walkToggle = KeyCode.LeftShift;
+	public KeyCode rotate45Left = KeyCode.W;
+	public KeyCode rotate45Right = KeyCode.C;
 	public KeyCode throwRock = KeyCode.Space;
+	public KeyCode placeBackWall = KeyCode.LeftControl;
+	public AudioSource communication;
+	public AudioSource noiseCommunication;
 
-	private float speedMove = 200.0f; //vitesse de déplacement du joueur
+	private float incrementationVolume = 0.1F; //niveau d'inc/déc pour changer le volume de la radio
+	private float speedMove = 150.0f; //vitesse de déplacement du joueur
 	private float speedRotate = 100.0f; //vitesse de rotation du joueur
 	private float joystickTolerance = 0.2F; //tolérence à la détection d'un mouvement sur les joysticks du gamepad
 	private float detectionTrigger = 1.0F; //niveau de détection des gachettes du gamepad
 	private float throwRockForce = 1000.0F; //force de lancer d'une pierre
 	private float maxSpeed = 7.529F; //vitesse (vélocité maximal), sert à déduire un rapport de vitesse entre la vitesse actuelle et la vitesse max
-	private float controllerShakeDelay = 50.0F; //temps de secousses du gamepad
-
-	private bool isShaking = false;
+	private float cranRotate = 45.0F; //degres absolu (1 = 360°) de cran ou le joueur tourne en utilisant Rb ou Lb
+	
 	private float currentSpeedRotate;
-	private DateTime beginDateShake;
 
 	public void gamePadShake(float forceRight, float forceLeft){
-		isShaking = true;
-		beginDateShake = DateTime.Now;
 		XInputDotNetPure.GamePad.SetVibration(XInputDotNetPure.PlayerIndex.One, forceRight, forceLeft);
 		XInputDotNetPure.GamePad.SetVibration(XInputDotNetPure.PlayerIndex.Two, forceRight, forceLeft);
 		XInputDotNetPure.GamePad.SetVibration(XInputDotNetPure.PlayerIndex.Three, forceRight, forceLeft);
@@ -62,8 +64,10 @@ public class PlayerController : MonoBehaviour {
 		else{
 			KeyboardManager();
 		}
-		if (isShaking)
-			shakingManager();
+	}
+
+	private void OnApplicationQuit(){
+		gamePadShake(0.0F, 0.0F);
 	}
 	
 	private void GamePadManager(){
@@ -72,14 +76,20 @@ public class PlayerController : MonoBehaviour {
 
 		if (GamepadInput.GamePad.GetTrigger(GamepadInput.GamePad.Trigger.RightTrigger, GamepadInput.GamePad.Index.Any) >= detectionTrigger)
 			rock.instanciateAndThrowRock(throwRockForce);
-		if (GamepadInput.GamePad.GetButtonDown(GamepadInput.GamePad.Button.Y, GamepadInput.GamePad.Index.Any))
-			gamePadShake(50.0F, 50.0F);
-		if (GamepadInput.GamePad.GetButtonDown(GamepadInput.GamePad.Button.X, GamepadInput.GamePad.Index.Any))
-			gamePadShake(50.0F, 0.0F);
-		if (GamepadInput.GamePad.GetButtonDown(GamepadInput.GamePad.Button.B, GamepadInput.GamePad.Index.Any))
-			gamePadShake(0.0F, 50.0F);
-		if (GamepadInput.GamePad.GetButtonDown(GamepadInput.GamePad.Button.A, GamepadInput.GamePad.Index.Any))
-			gamePadShake(0.0F, 0.0F);
+		if (GamepadInput.GamePad.GetTrigger(GamepadInput.GamePad.Trigger.LeftTrigger, GamepadInput.GamePad.Index.Any) >= detectionTrigger)
+			bodyLR.placeBackWall();
+		if (GamepadInput.GamePad.GetButtonDown(GamepadInput.GamePad.Button.RightShoulder, GamepadInput.GamePad.Index.Any))
+			transform.Rotate(0, cranRotate, 0);
+		if (GamepadInput.GamePad.GetButtonDown(GamepadInput.GamePad.Button.LeftShoulder, GamepadInput.GamePad.Index.Any))
+			transform.Rotate(0, -cranRotate, 0);
+		if (GamepadInput.GamePad.GetButtonDown(GamepadInput.GamePad.Button.Y, GamepadInput.GamePad.Index.Any)){
+			noiseCommunication.volume += incrementationVolume;
+			communication.volume += incrementationVolume;
+		}
+		if (GamepadInput.GamePad.GetButtonDown(GamepadInput.GamePad.Button.A, GamepadInput.GamePad.Index.Any) && communication.volume > 0.1F){
+			noiseCommunication.volume -= incrementationVolume;
+			communication.volume -= incrementationVolume;
+		}
 		
 		if (leftStick.y > joystickTolerance || leftStick.y < -joystickTolerance)
 			rigidbody.AddForce(transform.TransformDirection(Vector3.forward) * leftStick.y * speedMove);
@@ -107,8 +117,14 @@ public class PlayerController : MonoBehaviour {
 			tmpSpeedRotate = speedRotate;
 		}
 
-		if (Input.GetKey (throwRock))
+		if (Input.GetKeyDown (throwRock))
 			rock.instanciateAndThrowRock(throwRockForce);
+		if (Input.GetKeyDown (placeBackWall))
+			bodyLR.placeBackWall();
+		if (Input.GetKeyDown (rotate45Left))
+			transform.Rotate(0, -cranRotate, 0);
+		if (Input.GetKeyDown(rotate45Right))
+			transform.Rotate(0, cranRotate, 0);
 
 		if (Input.GetKey (forward))
 			rigidbody.AddForce(transform.TransformDirection(Vector3.forward) * tmpSpeed);
@@ -118,7 +134,6 @@ public class PlayerController : MonoBehaviour {
 			rigidbody.AddForce(transform.TransformDirection(Vector3.left) * tmpSpeed);
 		if (Input.GetKey (strafeRight))
 			rigidbody.AddForce(transform.TransformDirection(Vector3.right) * tmpSpeed);
-
 		if (Input.GetKey (turnLeft)){
 			currentSpeedRotate = tmpSpeedRotate;
 			transform.Rotate(Vector3.up * Time.deltaTime * -tmpSpeedRotate);
@@ -129,12 +144,5 @@ public class PlayerController : MonoBehaviour {
 		}
 		else
 			currentSpeedRotate = 0.0F;
-	}
-
-	private void shakingManager(){
-		if ((DateTime.Now - beginDateShake).TotalMilliseconds >= controllerShakeDelay){
-			gamePadShake(0.0F, 0.0F);
-			isShaking = false;
-		}
 	}
 }

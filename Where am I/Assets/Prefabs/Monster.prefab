@@ -77,7 +77,6 @@ GameObject:
   - 4: {fileID: 453680}
   - 135: {fileID: 13553680}
   - 114: {fileID: 11453680}
-  - 82: {fileID: 8253678}
   m_Layer: 0
   m_Name: AttackPlayer
   m_TagString: Untagged
@@ -92,7 +91,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .170000002, y: -2.36999989, z: 0}
+  m_LocalPosition: {x: 15.3000002, y: 5.19999981, z: -27.8999996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 453674}
@@ -157,74 +156,16 @@ AudioSource:
   m_GameObject: {fileID: 153678}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: cdd9939dcdadb934bb2a8b0b69804c7c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: db8cf74409f11d749aa32ba2f7f172fd, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .215000004
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 0
-  MaxDistance: 11
-  Pan2D: 0
-  rolloffMode: 1
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
---- !u!82 &8253678
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 153680}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: c30c4598048d1ff4388c3d1ce48f69b4, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 0
-  MaxDistance: 2
+  MaxDistance: 16
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -273,7 +214,7 @@ AudioSource:
   m_GameObject: {fileID: 153674}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 46f2d614bb6b5424cb8dc6372fc1578a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: bec726d3cef00734fae053b57589c573, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(AudioSource))]
 public class AttackPlayer : MonoBehaviour {
 
 	private AudioSource chaseSoundSource;
@@ -18,9 +17,6 @@ public class AttackPlayer : MonoBehaviour {
 				if(chaseSoundSource != null && chaseSoundSource.isPlaying){
 					chaseSoundSource.Stop();
 				}
-				/*if(!audio.isPlaying){
-					audio.Play();
-				}*/
 				other.SendMessage("MonsterDeath");
 			}
 		}

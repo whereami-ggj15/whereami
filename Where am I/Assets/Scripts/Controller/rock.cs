@@ -2,12 +2,19 @@
 using System.Collections;
 
 public class rock : MonoBehaviour {
+
+	public AudioClip collisionSoundRockGround;
+	public AudioClip collisionSoundRockWalls;
+	public AudioClip collisionSoundRockWater;
+
 	private static bool isThrowing = false;
 	private static GameObject rockGameObject;
 	private static float highSpawnRock = 2.5F;
-	private static float highLimitUnspawn = -10.0F;
 	private static string objectRockName = "Rock";
 	private static string obejctPlayerName = "Player";
+
+	private AudioSource audioPlayer;
+	private float highLimitUnspawn = -10.0F;
 
 	public static void instanciateAndThrowRock(float force){
 		if (!isThrowing){
@@ -26,8 +33,18 @@ public class rock : MonoBehaviour {
 		}
 	}
 
-	private void OnCollisionEnter(Collision ground){
+	private void OnCollisionEnter(Collision other){
 		Debug.Log("Rock collision !");
+		if (other.gameObject.tag == "GroundMap")
+			audioPlayer.PlayOneShot(collisionSoundRockGround);
+		if (other.gameObject.tag == "WallsMap")
+			audioPlayer.PlayOneShot(collisionSoundRockWalls);
+		if (other.gameObject.tag == "WaterMap")
+			audioPlayer.PlayOneShot(collisionSoundRockWater);
+	}
+
+	private void Start(){
+		audioPlayer = GetComponent<AudioSource>();
 	}
 
 	private void Update(){
