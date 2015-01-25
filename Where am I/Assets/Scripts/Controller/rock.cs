@@ -18,7 +18,6 @@ public class rock : MonoBehaviour {
 
 	public static void instanciateAndThrowRock(float force){
 		if (!isThrowing){
-			Debug.Log("Player is throwing a rock !");
 			rock rockScript;
 			Transform playerTransform = GameObject.Find(obejctPlayerName).transform;
 			
@@ -34,13 +33,23 @@ public class rock : MonoBehaviour {
 	}
 
 	private void OnCollisionEnter(Collision other){
-		Debug.Log("Rock collision !");
-		if (other.gameObject.tag == "GroundMap")
+		if (other.gameObject.tag == "GroundMap"){
 			audioPlayer.PlayOneShot(collisionSoundRockGround);
-		if (other.gameObject.tag == "WallsMap")
+		}
+		if (other.gameObject.tag == "WallsMap"){
 			audioPlayer.PlayOneShot(collisionSoundRockWalls);
-		if (other.gameObject.tag == "WaterMap")
+		}
+		if (other.gameObject.tag == "WaterMap"){
 			audioPlayer.PlayOneShot(collisionSoundRockWater);
+			rigidbody.detectCollisions = false;
+		}
+	}
+
+	private void OnTriggerEnter(Collision other){
+		if (other.gameObject.tag == "WaterMap"){
+			audioPlayer.PlayOneShot(collisionSoundRockWater);
+			rigidbody.detectCollisions = false;
+		}
 	}
 
 	private void Start(){
@@ -49,7 +58,6 @@ public class rock : MonoBehaviour {
 
 	private void Update(){
 		if (rockGameObject.rigidbody.velocity.magnitude <= 0.0F || rockGameObject.transform.position.y <= highLimitUnspawn){
-			Debug.Log ("rock depop from the world");
 			isThrowing = false;
 			Destroy(rockGameObject);
 			rockGameObject = null;
